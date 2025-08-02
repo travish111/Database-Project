@@ -32,21 +32,22 @@ applying the concepts learned in this course to develop a functional backend dat
 5. (45 points) Database Interaction:
 * (15 points) SQL Queries: Write at least one multi-table query. Example: Show the names of customers along with the names of the products they purchased where the product price > $100.
 * (30 points) Business Logic: Write code in a language of your choice (e.g., Python, Java) to demonstrate application-level interaction with the database. This can be through a terminal/console interface.
-* Deliverables:
-** Video demonstration of SQL and code-based interaction.
-** Source code included in GitHub repository.
+  
+Deliverables:
+* Video demonstration of SQL and code-based interaction.
+* Source code included in GitHub repository.
 
 
 ### Group Scaling Expectations:
 
 * Individual projects must include at least 4 relations (tables). Simple CLI-based Business logic is sufficient (e.g., inserting new products into the database, viewing products).
 
-* For group projects, each additional member increases the minimum relation count by 1:
+For group projects, each additional member increases the minimum relation count by 1:
 
-** 2 members: 5 tables, with CLI-based business logic including more comprehensive features such as product viewing based on search criteria.
-** 3 members: 6 tables, same as above, but with additional CLI features.
-** 4 members: 7 tables, with CLI-based business logic similar to above and a basic front-end implementing selected functionality (e.g., inserting into a table). Not all features require a front-end.
-** 5 members: 8 tables, with more comprehensive functionality and broader front-end support for selected features.
+* 2 members: 5 tables, with CLI-based business logic including more comprehensive features such as product viewing based on search criteria.
+* 3 members: 6 tables, same as above, but with additional CLI features.
+* 4 members: 7 tables, with CLI-based business logic similar to above and a basic front-end implementing selected functionality (e.g., inserting into a table). Not all features require a front-end.
+* 5 members: 8 tables, with more comprehensive functionality and broader front-end support for selected features.
 
 ### Sample Project (Optional):
 
