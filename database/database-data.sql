@@ -1,0 +1,3 @@
+FROM customers * ALL;
+
+--TODO
