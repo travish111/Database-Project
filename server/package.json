@@ -1,0 +1,17 @@
+{
+  "name": "api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "init": "node server.js --init"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.2",
+    "better-sqlite3": "^9.4.0"
+  },
+  "devDependencies": { "nodemon": "^3.0.0" }
+}
