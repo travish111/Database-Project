@@ -1,13 +1,13 @@
 CREATE TABLE customers (
     customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    customer_name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE staff (
     staff_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    staff_name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     role TEXT NOT NULL,
     password_hash TEXT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE staff (
 
 CREATE TABLE products (
     product_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    product_name TEXT NOT NULL,
     price REAL NOT NULL CHECK(price >= 0),
     stock_qty INTEGER NOT NULL CHECK(stock_qty >= 0),
     active INTEGER NOT NULL DEFAULT 1

@@ -29,6 +29,25 @@ app.get('/api/products', (req,res) => {
   res.json(q.allProducts.all());
 });
 
+app.get('/api/report/customer-products', (req, res) => {
+  const rows = db.prepare(`
+    SELECT c.name AS customer_name,
+           o.order_id,
+           p.name AS product_name,
+           oi.quantity,
+           oi.unit_price,
+           o.order_date,
+           o.status
+    FROM orders o
+    JOIN customers c ON c.customer_id = o.customer_id
+    JOIN order_items oi ON oi.order_id = o.order_id
+    JOIN products p ON p.product_id = oi.product_id
+    WHERE o.status = 'paid'
+    ORDER BY o.order_date DESC, c.name, o.order_id;
+  `).all();
+  res.json(rows);
+});
+
 app.post('/api/orders', (req,res) => {
   const { customer_id, items } = req.body;
   if (!customer_id || !Array.isArray(items) || items.length === 0) {
