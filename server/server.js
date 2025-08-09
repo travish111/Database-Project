@@ -7,8 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Always create tables + prepare statements
+init();
+
 if (process.argv.includes('--init')) {
-  init();
   // create a few products and customers
   db.exec(`
     INSERT OR IGNORE INTO customers (name, email) VALUES
@@ -22,6 +24,7 @@ if (process.argv.includes('--init')) {
       ('Notebook',8.49,200,1);
   `);
   console.log('DB initialized and updated.');
+  process.exit(0);
 }
 
 // routes

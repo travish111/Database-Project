@@ -1,10 +1,11 @@
+// server/db.js
 import Database from 'better-sqlite3';
-import fs from 'node:fs';
 
 const DB_PATH = process.env.DB_PATH || './data.sqlite';
 export const db = new Database(DB_PATH);
 
-// initialize tables
+export let q; // <-- make this assignable
+
 export function init() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS customers (
@@ -42,16 +43,16 @@ export function init() {
       PRIMARY KEY (order_id, product_id)
     );
   `);
+
+  // prepare AFTER tables exist
+  q = {
+    allProducts: db.prepare(`SELECT * FROM products WHERE active = 1 ORDER BY name`),
+    getProduct: db.prepare(`SELECT * FROM products WHERE product_id = ?`),
+    decStock:   db.prepare(`UPDATE products SET stock_qty = stock_qty - ? WHERE product_id = ?`),
+
+    insertOrder: db.prepare(`INSERT INTO orders (customer_id,status) VALUES (?, 'pending')`),
+    insertItem:  db.prepare(`INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES (?,?,?,?)`),
+
+    findCustomer: db.prepare(`SELECT customer_id FROM customers WHERE customer_id = ?`)
+  };
 }
-
-// Prepared SQL statements to update db
-export const q = {
-  allProducts: db.prepare(`SELECT * FROM products WHERE active = 1 ORDER BY name`),
-  getProduct: db.prepare(`SELECT * FROM products WHERE product_id = ?`),
-  decStock:   db.prepare(`UPDATE products SET stock_qty = stock_qty - ? WHERE product_id = ?`),
-
-  insertOrder: db.prepare(`INSERT INTO orders (customer_id,status) VALUES (?, 'pending')`),
-  insertItem:  db.prepare(`INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES (?,?,?,?)`),
-
-  findCustomer: db.prepare(`SELECT customer_id FROM customers WHERE customer_id = ?`)
-};
