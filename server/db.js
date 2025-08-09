@@ -1,11 +1,11 @@
-// server/db.js
 import Database from 'better-sqlite3';
 
 const DB_PATH = process.env.DB_PATH || './data.sqlite';
 export const db = new Database(DB_PATH);
 
-export let q; // <-- make this assignable
+export let q; 
 
+// initialize tables
 export function init() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS customers (

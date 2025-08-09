@@ -59,7 +59,7 @@ export default function App() {
 
   return (
     <div style={{ padding: 24, fontFamily: 'system-ui' }}>
-      <h1>Vite + SQLite Mini‑Shop</h1>
+      <h1>Database Project</h1>
       {message && <p><strong>{message}</strong></p>}
 
       <h2>Products</h2>
